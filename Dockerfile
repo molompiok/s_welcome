@@ -28,7 +28,7 @@ COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
 
 # Installer uniquement les dépendances de production
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 
 # S'assurer que les permissions sont correctement définies
 RUN chown -R appuser:appgroup /app
