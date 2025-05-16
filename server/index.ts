@@ -91,7 +91,7 @@ async function startServer() {
       console.log(`[Theme Server ${SERVICE_ID}] Serveur HTTP fermé.`);
       await closeQueue(); // Fermer la connexion BullMQ/Redis
       process.exit(0);
-    });
+    }); 
     // Forcer la fermeture après un délai si le serveur ne se ferme pas
     setTimeout(async () => {
       console.error(`[Theme Server ${SERVICE_ID}] Arrêt forcé après timeout.`);
