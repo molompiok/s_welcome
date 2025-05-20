@@ -14,14 +14,19 @@ COPY . .
 RUN pnpm build
 
 
-ENV NODE_ENV=production
-ENV PORT=3005
 
+ENV NODE_ENV=production
+ENV PORT=3003
+ENV REDIS_HOST=sublymus_infra_redis
+ENV SERVICE_ID=s_welcome
+ENV TARGET_API_HEADER=x-target-api-service 
+ENV STORE_URL_HEADER=x-base-url
+ENV SERVER_URL_HEADER=x-server-url
 
 
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=3 \
   CMD wget --quiet --spider http://localhost:${PORT}/health || exit 1
 
-EXPOSE 3005
+EXPOSE 3003
 
 CMD ["pnpm", "run", "server:prod"]
