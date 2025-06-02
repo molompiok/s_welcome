@@ -9,6 +9,7 @@ import 'swiper/css';
 import { Swiper as SwiperType } from 'swiper/types';
 import { getImg } from '../../Components/Utils/StringFormater';
 import { AnimationCard } from '../anime/+Page';
+import { useSResource } from '../../Components/Utils/useSResource';
 
 // SVG animé pour les blobs décoratifs
 
@@ -203,6 +204,10 @@ export default function HomePage() {
 
   const imageRef = useRef<HTMLDivElement>(null)
 
+  const { data:featureVideoUrl} = useSResource(features[currentVideoIndex].videoUrl,{
+    type:'video'
+  })
+
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -312,7 +317,7 @@ export default function HomePage() {
           autoPlay
           muted
           className="absolute inset-0 w-full h-full object-cover"
-          src={features[currentVideoIndex].videoUrl}
+          src={featureVideoUrl||''}
         />
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-2 sx:p-4 sm:px-6 lg:px-8 relative z-10">
