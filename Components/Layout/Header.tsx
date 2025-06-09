@@ -84,7 +84,7 @@ export  function Header() {
              {/* TODO: Gérer le changement de langue */}
             {/* <LanguageSwitcher />  */}
             <Link
-              href={pageContext.config.s_dashboard_url || "https://dashboard.sublymus.com/login"} // URL vers le dashboard owner
+              href={pageContext.config.s_dashboard_url || "https://dash.sublymus.com"} // URL vers le dashboard owner
               className="ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 transition-colors"
             >
               {t('header.ownerLogin')}
@@ -129,7 +129,7 @@ export  function Header() {
               {/* TODO: Language switcher mobile */}
               <div className="mt-3 space-y-1">
                 <Link
-                  href={pageContext.config.s_dashboard_url || "https://dashboard.sublymus.com/login"}
+                  href={pageContext.config.s_dashboard_url || "https://dash.sublymus.com"}
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                   }}
