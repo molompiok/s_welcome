@@ -28,7 +28,7 @@
     "tutorials": "Tutoriels",
     "allRightsReserved": "Tous droits réservés"
   },
-   "common": {
+  "common": {
     "month": "mois",
     "learnMore": "En savoir plus",
     "getStarted": "Commencer",
@@ -79,14 +79,14 @@
       }
     },
     "problem": {
-        "tagline": "Les Défis du E-commerce Africain",
-        "title": "Vendre en Ligne en Afrique : Plus Simple que Vous ne le Pensez !",
-        "point1": "Les réseaux sociaux montrent leurs limites pour une gestion professionnelle.",
-        "point2": "Manque de crédibilité et de personnalisation des vitrines actuelles.",
-        "point3": "Difficulté à gérer les paiements et la logistique de manière intégrée.",
-        "solutionIntro": "C'est pourquoi",
-        "solutionOutro": "vous offre une solution tout-en-un, pensée pour vous.",
-        "imagePlaceholder": "Illustration des défis ou d'entrepreneurs"
+      "tagline": "Les Défis du E-commerce Africain",
+      "title": "Vendre en Ligne en Afrique : Plus Simple que Vous ne le Pensez !",
+      "point1": "Les réseaux sociaux montrent leurs limites pour une gestion professionnelle.",
+      "point2": "Manque de crédibilité et de personnalisation des vitrines actuelles.",
+      "point3": "Difficulté à gérer les paiements et la logistique de manière intégrée.",
+      "solutionIntro": "C'est pourquoi",
+      "solutionOutro": "vous offre une solution tout-en-un, pensée pour vous.",
+      "imagePlaceholder": "Illustration des défis ou d'entrepreneurs"
     },
     "howItWorks": {
       "title": "Lancez Votre Boutique en 4 Étapes Simples",
@@ -128,7 +128,7 @@
         "feature2": "Analyses avancées",
         "feature3": "Outils marketing",
         "feature4": "Plus de produits & stockage",
-        "cta": "Découvrir l'Offre Fondateur"
+        "cta": "Découvrir l'Offre Premium"
       }
     },
     "ctaBottom": {

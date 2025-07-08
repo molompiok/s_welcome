@@ -258,7 +258,7 @@ export function Page({ parentRef, factor = 1 }: { factor?: number, parentRef: { 
     }, [size, parentRef])
     useEffect(() => {
         if (!rotatorRef.current) return;
-        
+
 
         const cards: CardProps[] = [
             // ----- CARTE 1: Livraison Dynamique -----
@@ -432,7 +432,7 @@ export function Page({ parentRef, factor = 1 }: { factor?: number, parentRef: { 
                         }
                     },
                     { // Charette: Apparition et disparition en "pop"
-                        element: <div style={{ width: `${s * 256 * 0.3}px`, height: `${s * 256 * 0.3}px`, background: getImg("/res/view_product/pack1.png", "contain") }} />,
+                        element: <div style={{ width: `${s * 256 * 0.3}px`, height: `${s * 256 * 0.3}px`, background: getImg("/res/view_delivery/pack1.png", "contain") }} />,
                         x: 0.25, y: 0.8, z: 0.1,
                         anime: {
                             scale: [0, 1.1, 0.9, 1, 1, 0], // Pop in, reste, pop out
