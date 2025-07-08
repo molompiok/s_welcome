@@ -10,6 +10,8 @@ import { Swiper as SwiperType } from 'swiper/types';
 import { getImg } from '../../Components/Utils/StringFormater';
 import { AnimationCard } from '../anime/+Page';
 import { useSResource } from '../../Components/Utils/useSResource';
+import { ClientCall } from '../../Components/Utils/functions';
+import { useWindowSize } from '../../Hooks/useWindowSize';
 
 // SVG animé pour les blobs décoratifs
 
@@ -204,10 +206,17 @@ export default function HomePage() {
       description: t('home.howItWorks.step4.description'),
     },
   ];
+  const size = useWindowSize()
 
+  const fs = size.width < 768 ? features.filter((f) => f.short) : features;
+
+  const [s] = useState({
+    features
+  })
+  s.features = fs;
   const imageRef = useRef<HTMLDivElement>(null)
 
-  const { data: featureVideoUrl } = useSResource(features[currentVideoIndex].videoUrl, {
+  const { data: featureVideoUrl } = useSResource(s.features[currentVideoIndex].videoUrl, {
     type: 'video'
   })
 
@@ -224,7 +233,7 @@ export default function HomePage() {
 
     const handleEnded = () => {
       setCurrentVideoIndex((prev) => {
-        const nextIndex = (prev + 1) % features.length;
+        const nextIndex = (prev + 1) % s.features.length;
         if (swiperRef.current) {
           swiperRef.current.slideToLoop(nextIndex);
         }
@@ -335,16 +344,8 @@ export default function HomePage() {
             <p className="text-lg text-gray-50 max-w-2xl mx-auto">{t('home.whySublymus.subtitle')}</p>
           </motion.div>
           <div className="md:hidden">
-            <Swiper
-              direction="vertical"
-              slidesPerView={3}
-              centeredSlides={true}
-              spaceBetween={20}
-              onSwiper={(swiper) => (swiperRef.current = swiper)}
-              onSlideChange={handleSlideChange}
-              className="h-[calc(3*16rem)] sx:h-[calc(3*14rem)]"
-            >
-              {features.filter((f) => f.short).map((feature, index) => (
+            <div className="flex flex-col gap-4 h-[calc(3*16rem)] sx:h-[calc(3*14rem)]">
+              {fs.map((feature, index) => (
                 <FeatureCard
                   Icon={feature.Icon}
                   title={feature.title}
@@ -357,7 +358,7 @@ export default function HomePage() {
                   progress={index === currentVideoIndex ? progress : 0}
                 />
               ))}
-            </Swiper>
+            </div>
           </div>
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
