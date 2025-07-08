@@ -136,7 +136,7 @@ export default function HomePage() {
       videoUrl: '/res/video_features/video_1.webm',
       bgColor: 'bg-teal-100/30',
       iconColor: 'text-teal-600',
-      short:true,
+      short: true,
     },
     {
       Icon: Settings,
@@ -145,7 +145,7 @@ export default function HomePage() {
       videoUrl: '/res/video_features/video_2.webm',
       bgColor: 'bg-blue-100/30',
       iconColor: 'text-blue-600',
-      short:true,
+      short: true,
     },
     {
       Icon: Sparkles,
@@ -154,7 +154,7 @@ export default function HomePage() {
       videoUrl: '/res/video_features/video_3.webm',
       bgColor: 'bg-purple-100/30',
       iconColor: 'text-purple-600',
-      short:true,
+      short: true,
     },
     {
       Icon: Users,
@@ -207,8 +207,8 @@ export default function HomePage() {
 
   const imageRef = useRef<HTMLDivElement>(null)
 
-  const { data:featureVideoUrl} = useSResource(features[currentVideoIndex].videoUrl,{
-    type:'video'
+  const { data: featureVideoUrl } = useSResource(features[currentVideoIndex].videoUrl, {
+    type: 'video'
   })
 
   const [progress, setProgress] = useState(0);
@@ -302,11 +302,11 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div
-            initial={{ x: -50 }}
+              initial={{ x: -50 }}
               className="relative w-[100vw] sx:w-full"
             >
               <div ref={imageRef} className="w-[100vw] sx:w-full scale-120 sx:scale-100 flex items-center justify-center ">
-                <AnimationCard parentRef={imageRef} factor={1}/>
+                <AnimationCard parentRef={imageRef} factor={1} />
               </div>
             </motion.div>
           </div>
@@ -320,7 +320,7 @@ export default function HomePage() {
           autoPlay
           muted
           className="absolute inset-0 w-full h-full object-cover"
-          src={featureVideoUrl||''}
+          src={featureVideoUrl || ''}
         />
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-2 sx:p-4 sm:px-6 lg:px-8 relative z-10">
@@ -337,7 +337,6 @@ export default function HomePage() {
           <div className="md:hidden">
             <Swiper
               direction="vertical"
-              loop={true}
               slidesPerView={3}
               centeredSlides={true}
               spaceBetween={20}
@@ -345,20 +344,18 @@ export default function HomePage() {
               onSlideChange={handleSlideChange}
               className="h-[calc(3*16rem)] sx:h-[calc(3*14rem)]"
             >
-              {features.filter((f)=> f.short).map((feature, index) => (
-                <SwiperSlide key={index}>
-                  <FeatureCard
-                    Icon={feature.Icon}
-                    title={feature.title}
-                    description={feature.description}
-                    iconColor={feature.iconColor}
-                    bgColor={feature.bgColor}
-                    videoUrl={feature.videoUrl}
-                    isActive={index === currentVideoIndex}
-                    onClick={() => handleCardClick(index)}
-                    progress={index === currentVideoIndex ? progress : 0}
-                  />
-                </SwiperSlide>
+              {features.filter((f) => f.short).map((feature, index) => (
+                <FeatureCard
+                  Icon={feature.Icon}
+                  title={feature.title}
+                  description={feature.description}
+                  iconColor={feature.iconColor}
+                  bgColor={feature.bgColor}
+                  videoUrl={feature.videoUrl}
+                  isActive={index === currentVideoIndex}
+                  onClick={() => handleCardClick(index)}
+                  progress={index === currentVideoIndex ? progress : 0}
+                />
               ))}
             </Swiper>
           </div>
@@ -392,10 +389,10 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="bg-slate-200 rounded-xl shadow-lg aspect-[4/3] sm:aspect-video lg:aspect-[4/3] flex items-center justify-center" 
-              style={{
-                background:getImg('/res/img/photo_5258017621280946394_y.jpg')
-              }}
+              <div className="bg-slate-200 rounded-xl shadow-lg aspect-[4/3] sm:aspect-video lg:aspect-[4/3] flex items-center justify-center"
+                style={{
+                  background: getImg('/res/img/photo_5258017621280946394_y.jpg')
+                }}
               >
               </div>
               {/* <DecorativeBlob fill='#DB2777' className="w-48 h-48 -bottom-10 -left-10" color="bg-sky-300" /> */}
@@ -571,7 +568,7 @@ export default function HomePage() {
               className="inline-flex items-center  px-2  py-4 border border-transparent text-lg font-medium rounded-lg hover:text-white text-white bg-teal-600 hover:bg-teal-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 "
             >
               <Link href="/preinscription" className=' hover:text-white text-white hover:bg-teal-700 bg-teal-600'>
-              {t('home.ctaBottom.cta')} <Gift className="inline ml-2 w-5 h-5" />
+                {t('home.ctaBottom.cta')} <Gift className="inline ml-2 w-5 h-5" />
               </Link>
             </div>
           </motion.div>
