@@ -19,7 +19,7 @@ function Link({ title, href, activeIcon, children, className = '', defaultIcon, 
   const { urlPathname } = pageContext;
   let isActive = href === '/' ? urlPathname === href : urlPathname.startsWith(href);
   // Définir les classes de base et les classes actives/inactives Tailwind
-  const baseClasses = "flex items-center gap-3 px-2.5 py-1.5 rounded-lg transition-colors duration-150 ease-in-out"; // Augmenter gap et padding
+  const baseClasses = "inline-flex items-center gap-3 px-2.5 py-1.5 rounded-lg transition-colors duration-150 ease-in-out"; // Augmenter gap et padding
   const inactiveClasses = "text-gray-600 ";
   const activeClasses = "bg-blue-100/60 text-blue-700 font-medium"; // Utiliser bleu pour l'état actif
 
@@ -35,7 +35,7 @@ function Link({ title, href, activeIcon, children, className = '', defaultIcon, 
   return (
     <a title={title} href={onClick ? undefined : href} onClick={onClick} className={combinedClassName} >
       {icon && <span className="w-5 h-5">{icon}</span>} {/* Icône avec taille définie */}
-      {children && <span className="flex flex-wrap items-center ">{children}</span>} {/* Span pour le texte, truncate si long */}
+      {children && <span className="inline-flex flex-wrap items-center ">{children}</span>} {/* Span pour le texte, truncate si long */}
     </a>
   );
 }

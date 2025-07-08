@@ -1,6 +1,6 @@
 // Components/Landing/Header.tsx
 import React, { useState } from 'react';
-import { Menu, X, Briefcase, Home, Info, MessageSquare, Gift } from 'lucide-react';
+import { Menu, X, Briefcase, Home, Info, MessageSquare, Gift, Sparkles, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from '../../renderer/Link';
 import { usePageContext } from '../../renderer/usePageContext';
@@ -126,14 +126,17 @@ export function Header() {
               {/* TODO: Language switcher mobile */}
               <div className="mt-3 space-y-1">
                 <a
-                  href={"https://dash.sublymus.com"} target='_blank'
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
-                >
-                  {t('header.ownerLogin')}
-                </a>
+                    href="https://dash.sublymus.com" 
+                    target='_blank'
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center w-full px-4 py-3 rounded-xl text-base font-bold text-white bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl group"
+                  >
+                    <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+                      Espace vendeur
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </a>
               </div>
             </div>
           </div>

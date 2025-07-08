@@ -349,66 +349,75 @@ export default function HomePage() {
         <DecorativeBlob fill='#7C3AED' className="w-56 h-56 top-20 right-10" />
 
         <div className="container mx-auto relative">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="w-full text-center lg:text-left"
-          >
-            <motion.span
-              className="inline-block px-4 py-2 text-xs font-bold text-teal-700 bg-gradient-to-r from-teal-100 to-cyan-100 rounded-full mb-6 uppercase tracking-wider shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          <div className="w-full p-4 lg:grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="text-center lg:text-left"
             >
-              ✨ {t('home.hero.tagline')}
-            </motion.span>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
-              {t('home.hero.title.line1')}
-              <span className="block bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
-                {t('home.hero.title.line2')}
-              </span>
-            </h1>
-
-            <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              {t('home.hero.subtitle')}
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-              <motion.div
+              <motion.span
+                className="inline-block px-4 py-2 text-xs font-bold text-teal-700 bg-gradient-to-r from-teal-100 to-cyan-100 rounded-full mb-6 uppercase tracking-wider shadow-lg"
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Link
-                  href="https://dash.sublymus.com"
-                  className="inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-bold rounded-2xl text-white bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 shadow-xl hover:shadow-2xl transition-all duration-300"
+                ✨ {t('home.hero.tagline')}
+              </motion.span>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+                {t('home.hero.title.line1')}
+                <span className="block bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+                  {t('home.hero.title.line2')}
+                </span>
+              </h1>
+
+              <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                {t('home.hero.subtitle')}
+              </p>
+
+              <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <span>
-                    <Sparkles className="w-5 h-5 mr-2" />
-                    Créez votre boutique
-                  </span>
-                  <span>
-                    gratuitement
-                    <ArrowRight className="inline ml-2 w-5 h-5" />
-                  </span>
-                </Link>
-              </motion.div>
+                  <Link
+                    href="https://dash.sublymus.com"
+                    className="inline-flex items-center justify-center py-4 border border-transparent text-base font-bold rounded-2xl text-white bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 shadow-xl hover:shadow-2xl transition-all duration-300"
+                  >
+                    <span className='inline-flex  items-center'>
+                      <Sparkles className="w-5 h-5 mr-2" />
+                      Créez votre boutique
+                    </span>
+                    <span className='inline-flex  items-center'>
+                      gratuitement
+                      <ArrowRight className="inline ml-2 w-5 h-5" />
+                    </span>
+                  </Link>
+                </motion.div>
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="#features"
-                  className="inline-flex items-center justify-center px-6 py-4 border border-slate-300 text-base font-bold rounded-2xl text-slate-700 bg-white/80 backdrop-blur-sm hover:bg-white hover:shadow-xl transition-all duration-300"
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {t('home.hero.ctaSecondary')}
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
+                  <Link
+                    href="#features"
+                    className="inline-flex items-center justify-center px-6 py-4 border border-slate-300 text-base font-bold rounded-2xl text-slate-700 bg-white/80 backdrop-blur-sm hover:bg-white hover:shadow-xl transition-all duration-300"
+                  >
+                    {t('home.hero.ctaSecondary')}
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
 
-
+            <motion.div
+              initial={{ x: -50 }}
+              className="relative w-[100vw] sx:w-full"
+            >
+              <div ref={imageRef} className="w-[100vw] sx:w-full scale-120 sx:scale-100 flex items-center justify-center">
+                <AnimationCard parentRef={imageRef} factor={1} />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -771,4 +780,4 @@ export default function HomePage() {
       {/* Section finale supprimée conformément à la demande */}
     </div>
   );
-}
+} 
