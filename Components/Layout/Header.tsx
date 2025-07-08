@@ -1,16 +1,14 @@
 // Components/Landing/Header.tsx
 import React, { useState } from 'react';
-import { Menu, X, Briefcase, Home, Info, MessageSquare, Gift } from 'lucide-react'; // Lucide icons
+import { Menu, X, Briefcase, Home, Info, MessageSquare, Gift } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from '../../renderer/Link';
 import { usePageContext } from '../../renderer/usePageContext';
 import { navigate } from 'vike/client/router'
-// import SublymusLogo from '../../assets/svg/sublymus-logo.svg'; // Tu créeras ce SVG
 
-// Placeholder pour le logo si le SVG n'est pas prêt
 const SublymusLogoPlaceholder = () => (
   <div className="text-2xl font-bold text-slate-800">
-    Subly<span className="text-teal-500">mus</span>
+    Sub<span className="text-teal-500">lymus</span>
   </div>
 );
 
@@ -37,15 +35,15 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, Icon, onClick }) => {
       onClick={onClick}
     >
       <span className='flex items-center'>
-         {/* {Icon && <Icon className="w-4 h-4 mr-2" />} */}
-      {children}
+        {/* {Icon && <Icon className="w-4 h-4 mr-2" />} */}
+        {children}
       </span>
     </Link>
   );
 };
 
 
-export  function Header() {
+export function Header() {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pageContext = usePageContext() // Pour obtenir le lang
@@ -81,14 +79,13 @@ export  function Header() {
 
           {/* Actions Desktop (ex: Connexion / Dashboard Owner) */}
           <div className="hidden md:flex items-center">
-             {/* TODO: Gérer le changement de langue */}
-            {/* <LanguageSwitcher />  */}
-            <Link
-              href={pageContext.config.s_dashboard_url || "https://dash.sublymus.com"} // URL vers le dashboard owner
+            <a
+              href={"https://dash.sublymus.com"} // URL vers le dashboard owner
+              target='_blank'  
               className="ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 transition-colors"
             >
               {t('header.ownerLogin')}
-            </Link>
+            </a>
           </div>
 
           {/* Bouton Menu Mobile */}
@@ -117,9 +114,9 @@ export  function Header() {
           <div className="rounded-lg shadow-lg ">
             <div className="pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <NavLink key={item.href} href={item.href} onClick={()=>{
-                    navigate(item.href);
-                    setIsMobileMenuOpen(false);
+                <NavLink key={item.href} href={item.href} onClick={() => {
+                  navigate(item.href);
+                  setIsMobileMenuOpen(false);
                 }}>
                   {item.label}
                 </NavLink>
@@ -128,15 +125,15 @@ export  function Header() {
             <div className="pt-4 pb-3 border-t border-slate-200">
               {/* TODO: Language switcher mobile */}
               <div className="mt-3 space-y-1">
-                <Link
-                  href={pageContext.config.s_dashboard_url || "https://dash.sublymus.com"}
+                <a
+                  href={"https://dash.sublymus.com"} target='_blank'
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                   }}
                   className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
                 >
                   {t('header.ownerLogin')}
-                </Link>
+                </a>
               </div>
             </div>
           </div>

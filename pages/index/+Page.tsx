@@ -135,7 +135,8 @@ export default function HomePage() {
       description: t('home.features.customDesign.description'),
       videoUrl: '/res/video_features/video_1.webm',
       bgColor: 'bg-teal-100/30',
-      iconColor: 'text-teal-600'
+      iconColor: 'text-teal-600',
+      short:true,
     },
     {
       Icon: Settings,
@@ -143,7 +144,8 @@ export default function HomePage() {
       description: t('home.features.easyManagement.description'),
       videoUrl: '/res/video_features/video_2.webm',
       bgColor: 'bg-blue-100/30',
-      iconColor: 'text-blue-600'
+      iconColor: 'text-blue-600',
+      short:true,
     },
     {
       Icon: Sparkles,
@@ -151,7 +153,8 @@ export default function HomePage() {
       description: t('home.features.arInnovation.description'),
       videoUrl: '/res/video_features/video_3.webm',
       bgColor: 'bg-purple-100/30',
-      iconColor: 'text-purple-600'
+      iconColor: 'text-purple-600',
+      short:true,
     },
     {
       Icon: Users,
@@ -342,7 +345,7 @@ export default function HomePage() {
               onSlideChange={handleSlideChange}
               className="h-[calc(3*16rem)] sx:h-[calc(3*14rem)]"
             >
-              {features.map((feature, index) => (
+              {features.filter((f)=> f.short).map((feature, index) => (
                 <SwiperSlide key={index}>
                   <FeatureCard
                     Icon={feature.Icon}
