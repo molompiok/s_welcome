@@ -41,7 +41,8 @@ declare global {
        */
       initialLanguage?: string; // ✅ Type pour la langue initiale
       lang:string,
-
+      serverUrl:string,
+      serverApiUrl:string,
     }
   }
 }

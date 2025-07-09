@@ -56,9 +56,15 @@ async function startServer() {
     return res.sendFile(url);
   });
   app.get('*', async (req, res) => {
+     const headersOriginal = req.headers as Record<string, string> || {};
+    
+    const serverUrlFromHeader = headersOriginal['x-server-url']||'http://sublymus-server.com';
+    const serverApiFromHeader = headersOriginal['x-server-api-url'] || 'http://server.sublymus-server.com'
     const pageContextInit = {
       urlOriginal: req.originalUrl,
-      headersOriginal: req.headers
+      headersOriginal: req.headers,
+      serverUrl: serverUrlFromHeader,
+      serverApiUrl: serverApiFromHeader,
     }
     const pageContext = await renderPage(pageContextInit)
     if (pageContext.errorWhileRendering) {

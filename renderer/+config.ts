@@ -4,7 +4,13 @@ import type { Config } from 'vike/types'
 export default {
   // https://vike.dev/clientRouting
   clientRouting: true,
-  // https://vike.dev/meta
+   passToClient: [
+    'pageProps', 
+    'baseUrl', 
+    'lang', 
+    'serverUrl',
+    'serverApiUrl',
+  ],
   meta: {
     // Define new setting 'title'
     title: {
@@ -18,7 +24,4 @@ export default {
   hydrationCanBeAborted: true
 } satisfies Config
 
-const Host = `http://localhost:3003`
-const Server_Host = `http://172.25.72.235:5555`
-export {Host, Server_Host}
 

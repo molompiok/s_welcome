@@ -1,5 +1,5 @@
 //Components/Utils/StringFormater.ts
-import { Host } from "../../renderer/+config";
+import { ClientCall } from "./functions";
 
 
 export const getImg = (img?: string | Blob, size = 'cover', _host?: string | null | undefined) => {
@@ -7,11 +7,11 @@ export const getImg = (img?: string | Blob, size = 'cover', _host?: string | nul
         ? img :
         img instanceof Blob ?
             URL.createObjectURL(img) : ''
-        
+
     return `no-repeat center/${size} url(${(
-            _img?.startsWith('/') && _host !== null
-                ? _host || Host
-                : ''
-        )
+        _img?.startsWith('/') && _host !== null
+            ? _host || ''
+            : ''
+    )
         }${img})`
 }

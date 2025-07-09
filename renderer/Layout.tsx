@@ -14,18 +14,10 @@ import {Header} from '../Components/Layout/Header'; // Nouveau
 import {Footer} from '../Components/Layout/Footer'; // Nouveau
 import { Toaster } from 'react-hot-toast'; // Pour afficher les notifications toast
 import { SublymusServerApiProvider } from '../api/ReactSublymusServer';
-import { Server_Host } from './+config';
+
 
 function Layout({ children, pageContext }: { children: React.ReactNode; pageContext: PageContext }) {
   const { t } = useTranslation(); // t est déjà là
-  const serverApiUrl = Server_Host; // Exemple de variable d'env
-
-  if (!serverApiUrl) {
-    console.error("VITE_SUBLYMUS_SERVER_URL is not defined in environment variables.");
-    // Gérer l'erreur, peut-être afficher un message à l'utilisateur ou retourner un fallback
-    return <div>Erreur de configuration serveur. Veuillez contacter le support.</div>;
-  }
-
   // Pour la landing page, la plupart des appels serveur n'auront pas besoin de token
   const getDummyAuthToken = () => null;
 
@@ -36,7 +28,7 @@ function Layout({ children, pageContext }: { children: React.ReactNode; pageCont
   return (
     <React.StrictMode>
         <SublymusServerApiProvider
-          serverUrl={serverApiUrl}
+          serverUrl={'https://server.sublymus.com'}
           getAuthToken={getDummyAuthToken}
           handleUnauthorized={handleServerUnauthorized}
         >
