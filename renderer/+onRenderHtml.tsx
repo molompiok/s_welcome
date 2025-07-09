@@ -5,7 +5,7 @@ import i18next from "../Lib/i18n";
 import ReactDOMServer from 'react-dom/server'
 import { Layout } from './Layout'
 import { escapeInject, dangerouslySkipEscape } from 'vike/server'
-import logoUrl from './logo.svg'
+import logoUrl from './logo.png'
 import type { OnRenderHtmlAsync } from 'vike/types'
 import { getPageTitle } from './getPageTitle'
 import { I18nextProvider } from 'react-i18next';
@@ -19,11 +19,11 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
   // Alternatively, we can use an HTML stream, see https://vike.dev/streaming
   const pageHtml = ReactDOMServer.renderToString(
-     <I18nextProvider i18n={i18n}>
-        <Layout pageContext={pageContext}>
-          <Page />
-        </Layout>
-      </I18nextProvider>
+    <I18nextProvider i18n={i18n}>
+      <Layout pageContext={pageContext}>
+        <Page />
+      </Layout>
+    </I18nextProvider>
   )
 
   const title = getPageTitle(pageContext)
