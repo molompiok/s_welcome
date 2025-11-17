@@ -100,7 +100,7 @@ export class LoadMonitorService {
     const currentLag = this.lagSampler();
     this.state.currentLagAvg = currentLag;
 
-    this.logger.debug(`[LoadMonitorService ${this.serviceId}] Current Event Loop Lag (avg): ${currentLag.toFixed(2)}ms`);
+    // this.logger.debug(`[LoadMonitorService ${this.serviceId}] Current Event Loop Lag (avg): ${currentLag.toFixed(2)}ms`);
 
     const now = Date.now();
     const timeSinceLastRequest = now - this.state.lastRequestTimestamp;
@@ -126,7 +126,7 @@ export class LoadMonitorService {
         this.state.lowLagStartTimestamp = now;
       } else {
         const lowLagDurationMinutes = (now - this.state.lowLagStartTimestamp) / (60 * 1000);
-        this.logger.debug(`[LoadMonitorService ${this.serviceId}] Low lag duration: ${lowLagDurationMinutes.toFixed(1)} minutes`);
+        // this.logger.debug(`[LoadMonitorService ${this.serviceId}] Low lag duration: ${lowLagDurationMinutes.toFixed(1)} minutes`);
 
         if (lowLagDurationMinutes >= this.scaleDownCooldownMinutes) {
           this.logger.warn(`[LoadMonitorService ${this.serviceId}] Sustained low lag detected for ${lowLagDurationMinutes.toFixed(1)} minutes.`);
