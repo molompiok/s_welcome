@@ -25,7 +25,7 @@ ENV SERVER_URL_HEADER=x-server-url
 
 
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget --quiet --spider http://localhost:${PORT}/health || exit 1
+  CMD wget --quiet --spider http://127.0.0.1:${PORT}/health || exit 1
 
 EXPOSE 3003
 
