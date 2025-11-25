@@ -1,6 +1,6 @@
 // Components/Landing/Header.tsx
 import React, { useState } from 'react';
-import { Menu, X, Briefcase, Home, Info, MessageSquare, Gift, Sparkles, ArrowRight } from 'lucide-react';
+import { Menu, X, Briefcase, Home, Info, MessageSquare, Sparkles, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from '../../renderer/Link';
 import { usePageContext } from '../../renderer/usePageContext';
@@ -47,10 +47,34 @@ export function Header() {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pageContext = usePageContext() // Pour obtenir le lang
+  const { serverUrl } = pageContext;
+
+  // Construire l'URL du dashboard depuis serverUrl
+  // serverUrl est du type: http://sublymus.com ou https://sublymus.com
+  // On veut: http://dash.sublymus.com ou https://dash.sublymus.com
+  const getDashboardUrl = () => {
+    if (!serverUrl) {
+      // Fallback si serverUrl n'est pas disponible
+      return 'https://dash.sublymus.com';
+    }
+    
+    try {
+      const url = new URL(serverUrl);
+      const protocol = url.protocol; // http: ou https:
+      const hostname = url.hostname; // sublymus.com
+      
+      // Construire l'URL du dashboard
+      return `${protocol}//dash.${hostname}`;
+    } catch (error) {
+      console.error('[Header] Error parsing serverUrl:', error);
+      return 'https://dash.sublymus.com';
+    }
+  };
+
+  const dashboardUrl = getDashboardUrl();
 
   const navItems = [
     { href: '/', label: t('header.home'), Icon: Home },
-    { href: '/preinscription', label: t('header.preRegistration'), Icon: Gift },
     { href: '/a-propos', label: t('header.about'), Icon: Info },
     { href: '/faq', label: t('header.faq'), Icon: MessageSquare },
     { href: '/contact', label: t('header.contact'), Icon: Briefcase },
@@ -80,7 +104,7 @@ export function Header() {
           {/* Actions Desktop (ex: Connexion / Dashboard Owner) */}
           <div className="hidden md:flex items-center">
             <a
-              href={"https://dash.sublymus.com"} // URL vers le dashboard owner
+              href={dashboardUrl}
               target='_blank'  
               className="ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 transition-colors"
             >
@@ -126,7 +150,7 @@ export function Header() {
               {/* TODO: Language switcher mobile */}
               <div className="mt-3 space-y-1">
                 <a
-                    href="https://dash.sublymus.com" 
+                    href={dashboardUrl}
                     target='_blank'
                     onClick={() => {
                       setIsMobileMenuOpen(false);

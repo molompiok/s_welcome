@@ -22,7 +22,6 @@ export function Footer() {
       title: t('footer.platform'),
       links: [
         { label: t('footer.home'), href: '/' },
-        { label: t('footer.preRegistrationOffer'), href: '/preinscription' },
         // { label: t('footer.pricing'), href: '/tarifs' }, // Future page
         { label: t('footer.features'), href: '/#features' }, // Lien vers section de la page d'accueil
       ],
